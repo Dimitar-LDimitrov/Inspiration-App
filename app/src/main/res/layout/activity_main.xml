@@ -7,5 +7,9 @@
     tools:context=".MainActivity">
 
 
-
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
 </androidx.constraintlayout.widget.ConstraintLayout>
