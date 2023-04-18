@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class QuoteReaderService {
 
-    private List<Quote> readAllQuotes(Activity activity) {
+    public List<Quote> readAllQuotes(Activity activity) {
         AssetManager assetManager = activity.getAssets();
         List<Quote> quotes = new ArrayList<>();
         int quoteId = 0;
@@ -26,7 +26,8 @@ public class QuoteReaderService {
                 quoteId++;
                 try {
                     String[] splitted = scanner.nextLine().split("\\|");
-                    Quote quote = new Quote(quoteId, splitted[0], splitted[1]);
+                    quoteId = Integer.valueOf(splitted[0]);
+                    Quote quote = new Quote(quoteId, splitted[1], splitted[2]);
                     quotes.add(quote);
 
                 } catch (Exception ex){
