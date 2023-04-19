@@ -1,4 +1,4 @@
-package com.example.inspiration_app.dashboard;
+package com.example.inspiration_app.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

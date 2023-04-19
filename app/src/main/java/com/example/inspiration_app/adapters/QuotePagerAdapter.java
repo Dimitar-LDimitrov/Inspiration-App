@@ -16,8 +16,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.example.inspiration_app.R;
 import com.example.inspiration_app.model.Quote;
 
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

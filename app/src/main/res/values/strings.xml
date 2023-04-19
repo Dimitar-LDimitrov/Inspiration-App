@@ -2,19 +2,10 @@
 <resources>
     <string name="app_name">Inspiration-App</string>
 
-    <string-array name="maya_angelou">
-        <item>Maya Angelou</item>
-        <item>"I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel."</item>
-    </string-array>
-
-    <string-array name="albert_einstein_first">
-        <item>Albert Einstein</item>
-        <item>"Try not to become a person of success, but rather try to become a person of value."</item>
-    </string-array>
-
-    <string-array name="oprah_winfrey">
-        <item>Oprah Winfrey</item>
-        <item>"The biggest adventure you can ever take is to live the life of your dreams."</item>
-    </string-array>
+    <string name="title_choose_your_destiny">Choose Your Destiny</string>
+    <string name="title_all_quotes">All Quotes</string>
+    <string name="title_liked_quotes">Liked Quotes</string>
+    <string name="title_all_jokes">All Jokes</string>
+    <string name="title_liked_jokes">Liked Jokes</string>
 </resources>
 

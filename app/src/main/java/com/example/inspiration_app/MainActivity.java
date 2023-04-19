@@ -14,13 +14,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Quote> allQuotes = new QuoteReaderService().readAllQuotes(this);
+        List<Quote> allQuotes = new QuoteReaderService().getAllQuotes(this);
 
         ViewPager viewPager = findViewById(R.id.viewPager);
         QuotePagerAdapter adapter = new QuotePagerAdapter(this, allQuotes);

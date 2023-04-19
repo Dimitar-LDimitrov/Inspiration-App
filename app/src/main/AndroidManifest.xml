@@ -12,14 +12,20 @@
         android:theme="@style/Theme.InspirationApp"
         tools:targetApi="31">
         <activity
+            android:name=".LikedQuotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:parentActivityName=".dashboard.DashboardActivity" />
+            android:label="@string/title_all_quotes"
+            android:parentActivityName=".activities.DashboardActivity" />
         <activity
-            android:name=".dashboard.DashboardActivity"
-            android:exported="true">
+            android:name=".activities.DashboardActivity"
+            android:exported="true"
+            android:label="@string/title_choose_your_destiny">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
