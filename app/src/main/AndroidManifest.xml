@@ -12,8 +12,10 @@
         android:theme="@style/Theme.InspirationApp"
         tools:targetApi="31">
         <activity
-            android:name=".LikedQuotesActivity"
-            android:exported="false" />
+            android:name=".activities.LikedQuotesActivity"
+            android:exported="false"
+            android:label="@string/title_liked_quotes"
+            android:parentActivityName=".activities.DashboardActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -33,5 +33,13 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        likedQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, LikedQuotesActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
