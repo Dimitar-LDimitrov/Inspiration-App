@@ -23,14 +23,12 @@ public class QuoteReaderService {
     public List<Quote> getAllQuotes(Activity activity) {
         AssetManager assetManager = activity.getAssets();
         List<Quote> quotes = new ArrayList<>();
-        int quoteCount = 0;
 
         try {
             InputStream inputStream = assetManager.open(ALL_QUOTES);
             Scanner scanner = new Scanner(inputStream);
 
             while (scanner.hasNext()){
-                quoteCount++;
                 try {
                     String[] splitted = scanner.nextLine().split("\\|");
                     Integer quoteId = Integer.valueOf(splitted[0]);

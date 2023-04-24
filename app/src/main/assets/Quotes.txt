@@ -22,6 +22,6 @@
 21|Henry Ford|Whether you think you can or you think you can't, you're right.|henry_ford
 22|Muhammad Ali|I hated every minute of training, but I said, 'Don't quit. Suffer now and live the rest of your life as a champion.'|muhammad_ali
 23|Bruce Springsteen|The best music is essentially there to provide you something to face the world with.|bruce_springsteen
-24|Ernest Hemingway|The world breaks everyone, and afterward, some are strong at the broken places.|ernest_hemingway
+24|Ernest Hemingway|The world breaks everyone and afterward many are strong at the broken places. But those that will not break it kills. It kills the very good and the very gentle and the very brave impartially. If you are none of these you can be sure it will kill you too but there will be no special hurry.|ernest_hemingway
 25|Michael Jordan|I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.|michael_jordan
 26|Anne Frank|How wonderful it is that nobody need wait a single moment before starting to improve the world.|anne_frank

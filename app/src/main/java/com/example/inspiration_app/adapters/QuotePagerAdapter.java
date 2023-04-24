@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 
 import com.example.inspiration_app.R;
@@ -22,20 +23,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class QuotePagerAdapter extends PagerAdapter {
+public class QuotePagerAdapter extends PagerAdapter implements View.OnClickListener{
 
     private static final String LIKED_QUOTES = "likedQuotes.txt";
     private List<Quote> quotes;
     private Context context;
+    private ImageButton likeButton;
+    private ViewPager viewPager;
 
-    public QuotePagerAdapter(Context context, List<Quote> quotes) {
+    public QuotePagerAdapter(Context context, List<Quote> quotes, ViewPager viewPager) {
         this.quotes = quotes;
         this.context = context;
+        this.viewPager = viewPager;
     }
 
     @Override
@@ -53,19 +55,21 @@ public class QuotePagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         final Quote currQuote = quotes.get(position);
 
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        ViewGroup layout = (ViewGroup) layoutInflater.inflate(R.layout.activity_main, container, false);
+        LayoutInflater viewInflater = LayoutInflater.from(context);
+        ViewGroup view = (ViewGroup) viewInflater.inflate(R.layout.activity_main, container, false);
 
-        TextView author = layout.findViewById(R.id.authorHolder);
-        TextView quote = layout.findViewById(R.id.quoteHolder);
-        ImageView image = layout.findViewById(R.id.authorImage);
+        TextView author = view.findViewById(R.id.authorHolder);
+        TextView quote = view.findViewById(R.id.quoteHolder);
+        ImageView image = view.findViewById(R.id.authorImage);
+        ImageButton prevButton = (ImageButton) view.findViewById(R.id.prevButton);
 
         author.setText(currQuote.getAuthor());
         quote.setText(currQuote.getQuote());
         String imageAsString = currQuote.getImage();
+        prevButton.setOnClickListener(this);
+
         try{
             int id = context.getResources().getIdentifier(imageAsString, "drawable", context.getPackageName());
-            //Drawable drawable = context.getResources().getDrawable(id,null);
             Drawable drawable = context.getDrawable(id);
             image.setImageDrawable(drawable);
         } catch (Exception ex){
@@ -73,14 +77,14 @@ public class QuotePagerAdapter extends PagerAdapter {
             image.setImageDrawable(drawable);
         }
 
-        likeQuote(currQuote, layout, quote);
+        likeQuote(currQuote, view, quote);
 
-        container.addView(layout);
-        return layout;
+        container.addView(view);
+        return view;
     }
 
-    private void likeQuote(Quote currQuote, ViewGroup layout, TextView quote) {
-        ImageButton likeButton = layout.findViewById(R.id.likeButton);
+    private void likeQuote(Quote currQuote, ViewGroup view, TextView quote) {
+        likeButton = view.findViewById(R.id.likeButton);
         likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,5 +126,19 @@ public class QuotePagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View) object);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.prevButton:
+                viewPager.setCurrentItem(getItem(-1), true);
+                break;
+        }
+    }
+
+    // get current view item
+    private int getItem(int i) {
+        return viewPager.getCurrentItem() + i;
     }
 }

@@ -11,7 +11,9 @@ import com.example.inspiration_app.model.Quote;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
+
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         List<Quote> allQuotes = new QuoteReaderService().getAllQuotes(this);
 
-        ViewPager viewPager = findViewById(R.id.viewPager);
-        QuotePagerAdapter adapter = new QuotePagerAdapter(this, allQuotes);
+        viewPager = findViewById(R.id.viewPager);
+        QuotePagerAdapter adapter = new QuotePagerAdapter(this, allQuotes, viewPager);
+
         viewPager.setAdapter(adapter);
     }
 }
