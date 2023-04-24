@@ -32,6 +32,12 @@ public class QuotePagerAdapter extends PagerAdapter implements View.OnClickListe
     private List<Quote> quotes;
     private Context context;
     private ImageButton likeButton;
+    private ImageButton prevButton;
+    private ImageButton nextButton;
+    private TextView author;
+    private TextView quote;
+    private ImageView image;
+    private String imageAsString;
     private ViewPager viewPager;
 
     public QuotePagerAdapter(Context context, List<Quote> quotes, ViewPager viewPager) {
@@ -58,16 +64,33 @@ public class QuotePagerAdapter extends PagerAdapter implements View.OnClickListe
         LayoutInflater viewInflater = LayoutInflater.from(context);
         ViewGroup view = (ViewGroup) viewInflater.inflate(R.layout.activity_main, container, false);
 
-        TextView author = view.findViewById(R.id.authorHolder);
-        TextView quote = view.findViewById(R.id.quoteHolder);
-        ImageView image = view.findViewById(R.id.authorImage);
-        ImageButton prevButton = (ImageButton) view.findViewById(R.id.prevButton);
+        author = view.findViewById(R.id.authorHolder);
+        quote = view.findViewById(R.id.quoteHolder);
+        image = view.findViewById(R.id.authorImage);
+        prevButton = (ImageButton) view.findViewById(R.id.prevButton);
+        nextButton = (ImageButton) view.findViewById(R.id.nextButton);
 
         author.setText(currQuote.getAuthor());
         quote.setText(currQuote.getQuote());
-        String imageAsString = currQuote.getImage();
+        imageAsString = currQuote.getImage();
         prevButton.setOnClickListener(this);
+        nextButton.setOnClickListener(this);
 
+        setImage();
+
+        likeQuote(currQuote, view, quote);
+
+        if (container.getChildCount() == 0) {
+            prevButton.setAlpha(0.3f);
+            prevButton.setClickable(false);
+        }
+
+        container.addView(view);
+        return view;
+    }
+
+    // Try to get image for author from drawable resources, if not set unknown_author image
+    private void setImage() {
         try{
             int id = context.getResources().getIdentifier(imageAsString, "drawable", context.getPackageName());
             Drawable drawable = context.getDrawable(id);
@@ -76,11 +99,6 @@ public class QuotePagerAdapter extends PagerAdapter implements View.OnClickListe
             Drawable drawable = context.getDrawable(R.drawable.unknown_author);
             image.setImageDrawable(drawable);
         }
-
-        likeQuote(currQuote, view, quote);
-
-        container.addView(view);
-        return view;
     }
 
     private void likeQuote(Quote currQuote, ViewGroup view, TextView quote) {
@@ -133,6 +151,9 @@ public class QuotePagerAdapter extends PagerAdapter implements View.OnClickListe
         switch (view.getId()){
             case R.id.prevButton:
                 viewPager.setCurrentItem(getItem(-1), true);
+                break;
+            case R.id.nextButton:
+                viewPager.setCurrentItem(getItem(+1), true);
                 break;
         }
     }
