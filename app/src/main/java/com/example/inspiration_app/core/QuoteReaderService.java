@@ -23,18 +23,21 @@ public class QuoteReaderService {
     public List<Quote> getAllQuotes(Activity activity) {
         AssetManager assetManager = activity.getAssets();
         List<Quote> quotes = new ArrayList<>();
-        int quoteId = 0;
+        int quoteCount = 0;
 
         try {
             InputStream inputStream = assetManager.open(ALL_QUOTES);
             Scanner scanner = new Scanner(inputStream);
 
             while (scanner.hasNext()){
-                quoteId++;
+                quoteCount++;
                 try {
                     String[] splitted = scanner.nextLine().split("\\|");
-                    quoteId = Integer.valueOf(splitted[0]);
-                    Quote quote = new Quote(quoteId, splitted[1], splitted[2]);
+                    Integer quoteId = Integer.valueOf(splitted[0]);
+                    String quoteAuthor = splitted[1];
+                    String quoteDesc = splitted[2];
+                    String quoteImage = splitted[3];
+                    Quote quote = new Quote(quoteId,quoteAuthor , quoteDesc, quoteImage);
                     quotes.add(quote);
 
                 } catch (Exception ex){

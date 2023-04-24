@@ -1,92 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e7e7e7"
-    android:orientation="vertical">
+    android:background="#ACE7EF">
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="7dp"
-        android:elevation="2dp"
-        app:cardUseCompatPadding="true">
-
-        <LinearLayout
+        android:layout_height="130dp"
+        android:layout_margin="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/authorHolder"
+            android:layout_marginLeft="50dp">
+
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:background="#8BC34A"
-                android:gravity="center"
-                android:text="Author Name"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:src="@drawable/background"
+                android:alpha="0.5"
+                app:tint="#7A000000" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/background" />
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/authorImage"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/unknown_author" />
 
-            <TextView
-                android:id="@+id/quoteHolder"
+        <TextView
+            android:id="@+id/authorHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Unknown Author"
+            android:gravity="center"
+            android:textColor="#000"
+            android:layout_marginLeft="100dp"
+            android:fontFamily="@font/catelyna_regular"
+            android:textSize="26sp"
+            android:layout_weight="1"
+            android:paddingBottom="1dp"/>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/background"
+                android:alpha="0.5"
+                app:tint="#7A000000" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/background" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/quoteHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="24dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:textSize="22sp"
+            android:text="Loren Ipsum Loren Ipsum Loren Ipsum"
+            android:textColor="#252323"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="24dp"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/prevButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Sample Text"
-                android:background="#D6F4B3"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:background="@color/white"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:scaleType="fitCenter"
+                android:src="@drawable/prev_quote" />
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/likeButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/like_quote" />
 
-                <ImageButton
-                    android:id="@+id/prevButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#D6F4B3"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:padding="5dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/prev_quote" />
-
-                <ImageButton
-                    android:id="@+id/likeButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#D6F4B3"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:padding="5dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/like_quote" />
-
-                <ImageButton
-                    android:id="@+id/nextButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#D6F4B3"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:padding="5dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/next_quote" />
-            </LinearLayout>
-
+            <ImageButton
+                android:id="@+id/nextButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:scaleType="fitCenter"
+                android:src="@drawable/next_quote" />
         </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

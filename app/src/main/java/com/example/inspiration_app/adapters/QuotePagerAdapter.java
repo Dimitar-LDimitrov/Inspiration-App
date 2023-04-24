@@ -1,11 +1,13 @@
 package com.example.inspiration_app.adapters;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -54,9 +58,20 @@ public class QuotePagerAdapter extends PagerAdapter {
 
         TextView author = layout.findViewById(R.id.authorHolder);
         TextView quote = layout.findViewById(R.id.quoteHolder);
+        ImageView image = layout.findViewById(R.id.authorImage);
 
         author.setText(currQuote.getAuthor());
         quote.setText(currQuote.getQuote());
+        String imageAsString = currQuote.getImage();
+        try{
+            int id = context.getResources().getIdentifier(imageAsString, "drawable", context.getPackageName());
+            //Drawable drawable = context.getResources().getDrawable(id,null);
+            Drawable drawable = context.getDrawable(id);
+            image.setImageDrawable(drawable);
+        } catch (Exception ex){
+            Drawable drawable = context.getDrawable(R.drawable.unknown_author);
+            image.setImageDrawable(drawable);
+        }
 
         likeQuote(currQuote, layout, quote);
 
