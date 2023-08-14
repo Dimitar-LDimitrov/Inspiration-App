@@ -1,4 +1,4 @@
-package com.example.inspiration_app.activities;
+ package com.example.inspiration_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;

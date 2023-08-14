@@ -7,5 +7,7 @@
     <string name="title_liked_quotes">Liked Quotes</string>
     <string name="title_all_jokes">All Jokes</string>
     <string name="title_liked_jokes">Liked Jokes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 
